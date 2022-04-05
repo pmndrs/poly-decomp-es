@@ -1,0 +1,35 @@
+* {
+  margin:0;
+  padding:0;
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none;   /* Chrome/Safari/Opera */
+  -khtml-user-select: none;    /* Konqueror */
+  -moz-user-select: none;      /* Firefox */
+  -ms-user-select: none;       /* Internet Explorer/Edge */
+  user-select: none;           /* Non-prefixed version, currently not supported by any browser */
+}
+body {
+  margin: 0px;
+  padding: 0px;
+  overflow: hidden;
+  font: 13px Helvetica, arial, freesans, clean, sans-serif;
+}
+p, h1 {
+  margin-bottom: 5px;
+}
+h1 a {
+  text-decoration: none;
+}
+a {
+  color: black;
+  text-decoration: underline;
+}
+#info {
+  display: block;
+  background-color:#eee;
+  padding:10px;
+}
+canvas {
+  width: 100%;
+  height: 100%;
+}
