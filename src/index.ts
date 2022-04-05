@@ -53,9 +53,9 @@ function lineSegmentsIntersect(p1: Point, p2: Point, q1: Point, q2: Point): bool
 
 /**
  * Get the area of a triangle spanned by the three given points. Note that the area will be negative if the points are not given in counter-clockwise order.
- * @param a point a
- * @param b point b
- * @param c point c
+ * @param a point 1
+ * @param b point 2
+ * @param c point 3
  * @return the area of a triangle spanned by the three given points
  */
 function triangleArea(a: Point, b: Point, c: Point): number {
@@ -83,9 +83,9 @@ const tmpPoint2: Point = [0, 0]
 
 /**
  * Check if three points are collinear
- * @param a point a
- * @param b point b
- * @param c point c
+ * @param a point 1
+ * @param b point 2
+ * @param c point 3
  * @param thresholdAngle angle to use when comparing the vectors. The function will return true if the angle between the resulting vectors is less than this value. Use zero for max precision.
  * @return whether the points are collinear
  */
@@ -117,7 +117,7 @@ function sqdist(a: Point, b: Point): number {
 
 /**
  * Get a vertex at position i. It does not matter if i is out of bounds, this function will just cycle.
- * @param i
+ * @param i vertex position
  * @return vertex at position i
  */
 function polygonAt(polygon: Polygon, i: number): Point {
@@ -133,7 +133,7 @@ function polygonClear(polygon: Polygon): void {
 }
 
 /**
- * Append points "from" to "to"-1 from an other polygon "poly" onto this one.
+ * Append points "from" to "to" -1 from an other polygon "poly" onto this one.
  * @param polygon the polygon to append to
  * @param poly The polygon to get points from.
  * @param from The vertex index in "poly".
@@ -202,8 +202,8 @@ const tmpLine2: [Point, Point] = [
 
 /**
  * Check if two vertices in the polygon can see each other
- * @param a Vertex index 1
- * @param b Vertex index 2
+ * @param a vertex index 1
+ * @param b vertex index 2
  * @return whether two vertices in the polygon can see each other
  */
 function polygonCanSee(polygon: Polygon, a: number, b: number) {
@@ -272,8 +272,8 @@ function polygonCanSee2(polygon: Polygon, a: number, b: number): boolean {
 
 /**
  * Copy the polygon from vertex i to vertex j.
- * @param i
- * @param j
+ * @param i the start vertex to copy from
+ * @param j the end vertex to copy from
  * @param targetPoly optional target polygon to save in.
  * @return the resulting copy.
  */
@@ -661,7 +661,7 @@ export function removeDuplicatePoints(polygon: Polygon, precision = 0): void {
  * Check if two scalars are equal
  * @param a scalar a
  * @param b scalar b
- * @param [precision] the precision for the equality check
+ * @param precision the precision for the equality check
  * @return whether the two scalars are equal with the given precision
  */
 function scalarsEqual(a: number, b: number, precision = 0): boolean {
