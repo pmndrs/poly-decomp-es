@@ -1,6 +1,6 @@
 import { describe, expect, test } from '@jest/globals'
-import type { Polygon } from './index'
-import { decomp, isSimple, quickDecomp, removeDuplicatePoints, makeCCW } from './index'
+import type { Polygon } from './types'
+import { decomp, isSimple, quickDecomp, removeDuplicatePoints, makeCCW } from './poly-decomp'
 
 const concave: Polygon = [
   [-1, 1],
@@ -17,7 +17,7 @@ for (let i = 0; i < N; i++) {
   circle.push([Math.cos(angle), Math.sin(angle)])
 }
 
-describe('poly-decomp-es', () => {
+describe('poly-decomp', () => {
   test('decomp', () => {
     const circleConvexes = decomp(circle)
     expect(circleConvexes).toHaveLength(1)
