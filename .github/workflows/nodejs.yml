@@ -24,6 +24,20 @@ jobs:
       - run: npm i -g npm@latest
       - run: npm run build
 
+  test:
+    name: Test
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          cache: 'yarn'
+          node-version: 14
+      - run: yarn install
+      - run: npm i -g npm@latest
+      - run: npm run test
+
   eslint:
     name: ESLint
     needs: install
