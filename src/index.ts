@@ -1,5 +1,5 @@
 export type Point = [number, number]
-export type Polygon = Array<Point>
+export type Polygon = Point[]
 
 /**
  * Compute the intersection between two lines.
@@ -629,7 +629,7 @@ export function quickDecomp(
  * @param precision The threshold angle to use when determining whether two edges are collinear. Use zero for finest precision.
  * @return The number of points removed
  */
-export function removeCollinearPoints(polygon: Polygon, precision: number): number {
+export function removeCollinearPoints(polygon: Polygon, precision = 0): number {
   let num = 0
   for (let i = polygon.length - 1; polygon.length > 3 && i >= 0; --i) {
     if (collinear(polygonAt(polygon, i - 1), polygonAt(polygon, i), polygonAt(polygon, i + 1), precision)) {
