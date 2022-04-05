@@ -81,7 +81,7 @@ if (isSimple(polygon)) {
 #### quickDecomp(polygon: Array&lt;Point&gt;): Array&lt;Array&lt;Point&gt;&gt;
 
 ```js
-var convexPolygons = decomp.quickDecomp(polygon)
+const convexPolygons = decomp.quickDecomp(polygon)
 ```
 
 Slices the polygon into convex sub-polygons, using a fast algorithm. Note that the input points objects will be re-used in the result array.
@@ -89,7 +89,7 @@ Slices the polygon into convex sub-polygons, using a fast algorithm. Note that t
 #### decomp(polygon: Array&lt;Point&gt;): Array&lt;Array&lt;Point&gt;&gt;
 
 ```js
-var convexPolygons = decomp.quickDecomp(polygon)
+const convexPolygons = decomp.quickDecomp(polygon)
 ```
 
 Decomposes the polygon into one or more convex sub-polygons using an optimal algorithm. Note that the input points objects will be re-used in the result array.
@@ -99,7 +99,7 @@ Decomposes the polygon into one or more convex sub-polygons using an optimal alg
 ```js
 if (decomp.isSimple(polygon)) {
   // Polygon does not self-intersect - it's safe to decompose.
-  var convexPolygons = decomp.quickDecomp(polygon)
+  const convexPolygons = decomp.quickDecomp(polygon)
 }
 ```
 
@@ -118,9 +118,9 @@ Reverses the polygon, if its vertices are not ordered counter-clockwise. Note th
 #### removeCollinearPoints(polygon: Array&lt;Point&gt;, thresholdAngle: number): void
 
 ```js
-var before = polygon.length
+const before = polygon.length
 decomp.removeCollinearPoints(polygon, 0.1)
-var numRemoved = before - polygon.length
+const numRemoved = before - polygon.length
 console.log(numRemoved + ' collinear points could be removed')
 ```
 
@@ -129,7 +129,7 @@ Removes collinear points in the polygon. This means that if three points are pla
 #### removeDuplicatePoints(polygon: Array&lt;Point&gt;, precision: number): void
 
 ```js
-var polygon = [
+const polygon = [
   [0, 0],
   [1, 1],
   [2, 2],
