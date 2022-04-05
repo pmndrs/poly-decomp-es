@@ -32,7 +32,7 @@ export default [
   },
   {
     input: `./src/index.ts`,
-    output: { file: `dist/poly-decomp.cjs.js`, format: 'cjs' },
+    output: { file: `dist/poly-decomp-es.cjs.js`, format: 'cjs' },
     plugins: [
       json(),
       resolve({ extensions }),
