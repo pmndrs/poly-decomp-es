@@ -11,14 +11,13 @@ export type Polygon = Array<Point>
 function lineInt(l1: Polygon, l2: Polygon, precision = 0): Point {
   precision = precision || 0
   const i: Point = [0, 0] // point
-  let a1, b1, c1, a2, b2, c2, det // scalars
-  a1 = l1[1][1] - l1[0][1]
-  b1 = l1[0][0] - l1[1][0]
-  c1 = a1 * l1[0][0] + b1 * l1[0][1]
-  a2 = l2[1][1] - l2[0][1]
-  b2 = l2[0][0] - l2[1][0]
-  c2 = a2 * l2[0][0] + b2 * l2[0][1]
-  det = a1 * b2 - a2 * b1
+  const a1 = l1[1][1] - l1[0][1]
+  const b1 = l1[0][0] - l1[1][0]
+  const c1 = a1 * l1[0][0] + b1 * l1[0][1]
+  const a2 = l2[1][1] - l2[0][1]
+  const b2 = l2[0][0] - l2[1][0]
+  const c2 = a2 * l2[0][0] + b2 * l2[0][1]
+  const det = a1 * b2 - a2 * b1
   if (!scalarsEqual(det, 0, precision)) {
     // lines are not parallel
     i[0] = (b2 * c1 - b1 * c2) / det
@@ -79,8 +78,8 @@ function isRightOn(a: Point, b: Point, c: Point): boolean {
   return triangleArea(a, b, c) <= 0
 }
 
-let tmpPoint1: Point = [0, 0]
-let tmpPoint2: Point = [0, 0]
+const tmpPoint1: Point = [0, 0]
+const tmpPoint2: Point = [0, 0]
 
 /**
  * Check if three points are collinear
@@ -192,8 +191,8 @@ function polygonIsReflex(polygon: Polygon, i: number): boolean {
   return isRight(polygonAt(polygon, i - 1), polygonAt(polygon, i), polygonAt(polygon, i + 1))
 }
 
-let tmpLine1: [Point, Point] = [[0, 0], [0, 0]]
-let tmpLine2: [Point, Point] = [[0, 0], [0, 0]]
+const tmpLine1: [Point, Point] = [[0, 0], [0, 0]]
+const tmpLine2: [Point, Point] = [[0, 0], [0, 0]]
 
 /**
  * Check if two vertices in the polygon can see each other
@@ -202,8 +201,6 @@ let tmpLine2: [Point, Point] = [[0, 0], [0, 0]]
  * @return whether two vertices in the polygon can see each other
  */
 function polygonCanSee(polygon: Polygon, a: number, b: number) {
-  let p: Point
-  let dist: number
   const l1 = tmpLine1
   const l2 = tmpLine2
 
@@ -213,7 +210,7 @@ function polygonCanSee(polygon: Polygon, a: number, b: number) {
   ) {
     return false
   }
-  dist = sqdist(polygonAt(polygon, a), polygonAt(polygon, b))
+  const dist = sqdist(polygonAt(polygon, a), polygonAt(polygon, b))
   for (let i = 0; i !== polygon.length; ++i) {
     // for each edge
     if ((i + 1) % polygon.length === a || i === a) {
@@ -229,7 +226,7 @@ function polygonCanSee(polygon: Polygon, a: number, b: number) {
       l1[1] = polygonAt(polygon, b)
       l2[0] = polygonAt(polygon, i)
       l2[1] = polygonAt(polygon, i + 1)
-      p = lineInt(l1, l2)
+      const p = lineInt(l1, l2)
       if (sqdist(polygonAt(polygon, a), p) < dist) {
         // if edge is blocking visibility to b
         return false
@@ -305,7 +302,7 @@ function getCutEdges(polygon: Polygon): [Point, Point][] {
   let min: [Point, Point][] = []
   let tmp1: [Point, Point][]
   let tmp2: [Point, Point][]
-  let tmpPoly: Polygon = []
+  const tmpPoly: Polygon = []
   let nDiags = Number.MAX_VALUE
 
   for (let i = 0; i < polygon.length; ++i) {
@@ -456,9 +453,9 @@ export function quickDecomp(
   result: Polygon[] = [],
   reflexVertices: Point[] = [],
   steinerPoints: Point[] = [],
-  delta: number = 25,
-  maxlevel: number = 100,
-  level: number = 0
+  delta = 25,
+  maxlevel = 100,
+  level = 0
 ): Polygon[] {
   // Points
   let upperInt: Point = [0, 0]
@@ -477,11 +474,11 @@ export function quickDecomp(
   let closestIndex = 0
 
   // polygons
-  let lowerPoly: Polygon = []
-  let upperPoly: Polygon = []
+  const lowerPoly: Polygon = []
+  const upperPoly: Polygon = []
 
-  let poly = polygon
-  let v = polygon
+  const poly = polygon
+  const v = polygon
 
   if (v.length < 3) {
     return result
@@ -642,7 +639,7 @@ export function removeCollinearPoints(polygon: Polygon, precision: number): numb
  * Remove duplicate points in the polygon.
  * @param precision The threshold to use when determining whether two points are the same. Use zero for best precision.
  */
-export function removeDuplicatePoints(polygon: Polygon, precision: number = 0): void {
+export function removeDuplicatePoints(polygon: Polygon, precision = 0): void {
   for (let i = polygon.length - 1; i >= 1; --i) {
     const pi = polygon[i]
     for (let j = i - 1; j >= 0; --j) {
@@ -661,7 +658,7 @@ export function removeDuplicatePoints(polygon: Polygon, precision: number = 0): 
  * @param [precision] the precision for the equality check
  * @return whether the two scalars are equal with the given precision
  */
-function scalarsEqual(a: number, b: number, precision: number = 0): boolean {
+function scalarsEqual(a: number, b: number, precision = 0): boolean {
   precision = precision || 0
   return Math.abs(a - b) <= precision
 }
@@ -673,6 +670,6 @@ function scalarsEqual(a: number, b: number, precision: number = 0): boolean {
  * @param precision the precision for the equality check
  * @return if the two points are equal
  */
-function pointsEqual(a: Point, b: Point, precision: number = 0): boolean {
+function pointsEqual(a: Point, b: Point, precision = 0): boolean {
   return scalarsEqual(a[0], b[0], precision) && scalarsEqual(a[1], b[1], precision)
 }

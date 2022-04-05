@@ -1,5 +1,6 @@
 import { describe, expect, test } from '@jest/globals'
-import { Polygon, decomp, isSimple, quickDecomp, removeDuplicatePoints, makeCCW } from './index'
+import type { Polygon} from './index';
+import { decomp, isSimple, quickDecomp, removeDuplicatePoints, makeCCW } from './index'
 
 const concave: Polygon = [
   [-1, 1],
