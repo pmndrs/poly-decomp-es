@@ -34,7 +34,7 @@ function lineInt(l1: Polygon, l2: Polygon, precision = 0): Point {
  * @param q2 The end vertex of the second line segment.
  * @return True if the two line segments intersect
  */
-function lineSegmentsIntersect(p1: number[], p2: number[], q1: number[], q2: number[]): boolean {
+function lineSegmentsIntersect(p1: Point, p2: Point, q1: Point, q2: Point): boolean {
   const dx = p2[0] - p1[0]
   const dy = p2[1] - p1[1]
   const da = q2[0] - q1[0]
