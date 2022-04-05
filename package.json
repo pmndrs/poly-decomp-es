@@ -26,6 +26,8 @@
     "prebuild": "rimraf dist",
     "build": "npm run typegen && rollup -c",
     "prepublishOnly": "npm run build && npm run test",
+    "prettier": "prettier --list-different .",
+    "prettier-fix": "prettier --write .",
     "typecheck": "tsc --noEmit --emitDeclarationOnly false --strict",
     "typegen": "tsc --outFile dist/poly-decomp-es.d.ts",
     "test": "jest"

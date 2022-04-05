@@ -191,8 +191,14 @@ function polygonIsReflex(polygon: Polygon, i: number): boolean {
   return isRight(polygonAt(polygon, i - 1), polygonAt(polygon, i), polygonAt(polygon, i + 1))
 }
 
-const tmpLine1: [Point, Point] = [[0, 0], [0, 0]]
-const tmpLine2: [Point, Point] = [[0, 0], [0, 0]]
+const tmpLine1: [Point, Point] = [
+  [0, 0],
+  [0, 0],
+]
+const tmpLine2: [Point, Point] = [
+  [0, 0],
+  [0, 0],
+]
 
 /**
  * Check if two vertices in the polygon can see each other
@@ -268,7 +274,7 @@ function polygonCanSee2(polygon: Polygon, a: number, b: number): boolean {
  * Copy the polygon from vertex i to vertex j.
  * @param i
  * @param j
- * @param targetPoly pptional target polygon to save in.
+ * @param targetPoly optional target polygon to save in.
  * @return the resulting copy.
  */
 function polygonCopy(polygon: Polygon, i: number, j: number, targetPoly: Polygon = []): Polygon {
