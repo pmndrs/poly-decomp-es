@@ -80,7 +80,11 @@ if (isSimple(polygon)) {
 
 ### Documentation
 
-#### quickDecomp(polygon: Array&lt;Point&gt;): Array&lt;Array&lt;Point&gt;&gt;
+#### type Point = [number, number]
+
+#### type Polygon = Point[]
+
+#### quickDecomp(polygon: Polygon): Polygon[]
 
 ```js
 const convexPolygons = decomp.quickDecomp(polygon)
@@ -88,7 +92,9 @@ const convexPolygons = decomp.quickDecomp(polygon)
 
 Slices the polygon into convex sub-polygons, using a fast algorithm. Note that the input points objects will be re-used in the result array.
 
-#### decomp(polygon: Array&lt;Point&gt;): Array&lt;Array&lt;Point&gt;&gt;
+If the polygon is not simple, the decomposition will produce unexpected results.
+
+#### decomp(polygon: Polygon): Polygon[] | false
 
 ```js
 const convexPolygons = decomp.quickDecomp(polygon)
@@ -96,7 +102,9 @@ const convexPolygons = decomp.quickDecomp(polygon)
 
 Decomposes the polygon into one or more convex sub-polygons using an optimal algorithm. Note that the input points objects will be re-used in the result array.
 
-#### isSimple(polygon: Array&lt;Point&gt;): boolean
+Returns false if the decomposition fails.
+
+#### isSimple(polygon: Polygon): boolean
 
 ```js
 if (decomp.isSimple(polygon)) {
@@ -107,7 +115,7 @@ if (decomp.isSimple(polygon)) {
 
 Returns true if any of the line segments in the polygon intersects. Use this to check if the input polygon is OK to decompose.
 
-#### makeCCW(polygon: Array&lt;Point&gt;): void
+#### makeCCW(polygon: Polygon): void
 
 ```js
 console.log('Polygon with clockwise winding:', polygon)
@@ -117,7 +125,7 @@ console.log('Polygon with counter-clockwise winding:', polygon)
 
 Reverses the polygon, if its vertices are not ordered counter-clockwise. Note that the input polygon array will be modified in place.
 
-#### removeCollinearPoints(polygon: Array&lt;Point&gt;, thresholdAngle: number): void
+#### removeCollinearPoints(polygon: Polygon, thresholdAngle = 0): void
 
 ```js
 const before = polygon.length
@@ -128,7 +136,7 @@ console.log(numRemoved + ' collinear points could be removed')
 
 Removes collinear points in the polygon. This means that if three points are placed along the same line, the middle one will be removed. The `thresholdAngle` is measured in radians and determines whether the points are collinear or not. Note that the input array will be modified in place.
 
-#### removeDuplicatePoints(polygon: Array&lt;Point&gt;, precision: number): void
+#### removeDuplicatePoints(polygon: Polygon, precision = 0): void
 
 ```js
 const polygon = [

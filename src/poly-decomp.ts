@@ -336,9 +336,9 @@ function getCutEdges(polygon: Polygon): [Point, Point][] {
 
 /**
  * Decomposes the polygon into one or more convex sub-Polygons.
- * @return An array or Polygon objects.
+ * @return An array of Polygon objects, or false if decomposition fails
  */
-export function decomp(polygon: Polygon) {
+export function decomp(polygon: Polygon): Polygon[] | false {
   const edges = getCutEdges(polygon)
   if (edges.length > 0) {
     return slicePolygon(polygon, edges)
@@ -451,7 +451,7 @@ function getIntersectionPoint(p1: Point, p2: Point, q1: Point, q2: Point, delta 
  * @param delta
  * @param maxlevel
  * @param level
- * @return
+ * @return the decomposed sub-polygons
  */
 export function quickDecomp(
   polygon: Polygon,
@@ -625,35 +625,19 @@ export function quickDecomp(
 
 /**
  * Remove collinear points in the polygon.
- * @param precision The threshold angle to use when determining whether two edges are collinear. Use zero for finest precision.
+ * @param thresholdAngle The threshold angle to use when determining whether two edges are collinear. Use zero for finest precision.
  * @return The number of points removed
  */
-export function removeCollinearPoints(polygon: Polygon, precision = 0): number {
+export function removeCollinearPoints(polygon: Polygon, thresholdAngle = 0): number {
   let num = 0
   for (let i = polygon.length - 1; polygon.length > 3 && i >= 0; --i) {
-    if (collinear(polygonAt(polygon, i - 1), polygonAt(polygon, i), polygonAt(polygon, i + 1), precision)) {
+    if (collinear(polygonAt(polygon, i - 1), polygonAt(polygon, i), polygonAt(polygon, i + 1), thresholdAngle)) {
       // Remove the middle point
       polygon.splice(i % polygon.length, 1)
       num++
     }
   }
   return num
-}
-
-/**
- * Remove duplicate points in the polygon.
- * @param precision The threshold to use when determining whether two points are the same. Use zero for best precision.
- */
-export function removeDuplicatePoints(polygon: Polygon, precision = 0): void {
-  for (let i = polygon.length - 1; i >= 1; --i) {
-    const pi = polygon[i]
-    for (let j = i - 1; j >= 0; --j) {
-      if (pointsEqual(pi, polygon[j], precision)) {
-        polygon.splice(i, 1)
-        continue
-      }
-    }
-  }
 }
 
 /**
@@ -677,4 +661,20 @@ function scalarsEqual(a: number, b: number, precision = 0): boolean {
  */
 function pointsEqual(a: Point, b: Point, precision = 0): boolean {
   return scalarsEqual(a[0], b[0], precision) && scalarsEqual(a[1], b[1], precision)
+}
+
+/**
+ * Remove duplicate points in the polygon.
+ * @param precision The threshold to use when determining whether two points are the same. Use zero for best precision.
+ */
+export function removeDuplicatePoints(polygon: Polygon, precision = 0): void {
+  for (let i = polygon.length - 1; i >= 1; --i) {
+    const pi = polygon[i]
+    for (let j = i - 1; j >= 0; --j) {
+      if (pointsEqual(pi, polygon[j], precision)) {
+        polygon.splice(i, 1)
+        continue
+      }
+    }
+  }
 }
