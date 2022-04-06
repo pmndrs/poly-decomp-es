@@ -1,6 +1,8 @@
 # poly-decomp-es
 
-Library for decomposing a 2D polygon into convex pieces.
+This is a maintained fork of poly-decomp.js, originally created by Stefan Hedman @schteppe.
+
+`poly-decomp-es` is a library for decomposing a 2D polygon into convex pieces.
 
 ```
 yarn add poly-decomp-es
