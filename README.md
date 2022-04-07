@@ -87,7 +87,9 @@ if (isSimple(polygon)) {
 #### quickDecomp(polygon: Polygon): Polygon[]
 
 ```js
-const convexPolygons = decomp.quickDecomp(polygon)
+import { quickDecomp } from 'poly-decomp-es'
+
+const convexPolygons = quickDecomp(polygon)
 ```
 
 Slices the polygon into convex sub-polygons, using a fast algorithm. Note that the input points objects will be re-used in the result array.
@@ -97,7 +99,9 @@ If the polygon is not simple, the decomposition will produce unexpected results.
 #### decomp(polygon: Polygon): Polygon[] | false
 
 ```js
-const convexPolygons = decomp.quickDecomp(polygon)
+import { decomp } from 'poly-decomp-es'
+
+const convexPolygons = decomp(polygon)
 ```
 
 Decomposes the polygon into one or more convex sub-polygons using an optimal algorithm. Note that the input points objects will be re-used in the result array.
@@ -107,19 +111,23 @@ Returns false if the decomposition fails.
 #### isSimple(polygon: Polygon): boolean
 
 ```js
-if (decomp.isSimple(polygon)) {
+import { isSimple, quickDecomp } from 'poly-decomp-es'
+
+if (isSimple(polygon)) {
   // Polygon does not self-intersect - it's safe to decompose.
-  const convexPolygons = decomp.quickDecomp(polygon)
+  const convexPolygons = quickDecomp(polygon)
 }
 ```
 
-Returns true if any of the line segments in the polygon intersects. Use this to check if the input polygon is OK to decompose.
+Returns true if the polygon does not self-intersect. Use this to check if the input polygon is OK to decompose.
 
 #### makeCCW(polygon: Polygon): void
 
 ```js
+import { makeCCW } from 'poly-decomp-es'
+
 console.log('Polygon with clockwise winding:', polygon)
-decomp.makeCCW(polygon)
+makeCCW(polygon)
 console.log('Polygon with counter-clockwise winding:', polygon)
 ```
 
@@ -128,8 +136,10 @@ Reverses the polygon, if its vertices are not ordered counter-clockwise. Note th
 #### removeCollinearPoints(polygon: Polygon, thresholdAngle = 0): void
 
 ```js
+import { removeCollinearPoints } from 'poly-decomp-es'
+
 const before = polygon.length
-decomp.removeCollinearPoints(polygon, 0.1)
+removeCollinearPoints(polygon, 0.1)
 const numRemoved = before - polygon.length
 console.log(numRemoved + ' collinear points could be removed')
 ```
@@ -139,13 +149,15 @@ Removes collinear points in the polygon. This means that if three points are pla
 #### removeDuplicatePoints(polygon: Polygon, precision = 0): void
 
 ```js
+import { removeDuplicatePoints } from 'poly-decomp-es'
+
 const polygon = [
   [0, 0],
   [1, 1],
   [2, 2],
   [0, 0],
 ]
-decomp.removeDuplicatePoints(polygon, 0.01)
+removeDuplicatePoints(polygon, 0.01)
 
 // polygon is now [[1,1],[2,2],[0,0]]
 ```
