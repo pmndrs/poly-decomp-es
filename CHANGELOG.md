@@ -1,5 +1,10 @@
 ### Changelog
 
+##### 0.4.0
+
+- Use rollup to output cjs and esm bundles
+- Convert to typescript
+
 ##### 0.3.0
 
 - Added `removeDuplicatePoints`.

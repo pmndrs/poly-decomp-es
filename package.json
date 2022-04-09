@@ -1,6 +1,6 @@
 {
   "name": "poly-decomp-es",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "license": "MIT",
   "description": "Convex decomposition for 2D polygons",
   "homepage": "https://github.com/pmndrs/poly-decomp-es",
