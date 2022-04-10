@@ -10,6 +10,8 @@ yarn add poly-decomp-es
 
 ![Decomposing a convcave polygon into convex regions](./readme.gif)
 
+[**Launch the demo!**](https://poly-decomp-es.vercel.app/)
+
 The library implements two algorithms, one optimal (but slow) and one less optimal (but fast).
 
 It's is a manual port of the C++ library [Poly Decomp](https://mpen.ca/406/bayazit) by [Mark Penner](https://mpen.ca).
