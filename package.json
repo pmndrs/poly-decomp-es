@@ -5,6 +5,9 @@
   "description": "Convex decomposition for 2D polygons",
   "homepage": "https://github.com/pmndrs/poly-decomp-es",
   "author": "Stefan Hedman <schteppe@gmail.com> (http://steffe.se)",
+  "contributors": [
+    "Isaac Mason <isaac@isaacmason.com> (https://github.com/isaac-mason)"
+  ],
   "keywords": [
     "convex",
     "decomposition",
