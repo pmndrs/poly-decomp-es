@@ -1,5 +1,9 @@
 ### Changelog
 
+##### 0.4.1
+
+- Fix usage with typescript
+
 ##### 0.4.0
 
 - Use rollup to output cjs and esm bundles
