@@ -2,7 +2,7 @@
 
 ##### 0.4.1
 
-- Fix usage with typescript
+- Fix typescript declaration output
 
 ##### 0.4.0
 
