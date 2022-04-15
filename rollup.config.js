@@ -26,12 +26,12 @@ const babelOptions = {
 
 export default [
   {
-    input: `./src/index.ts`,
+    input: `./src/poly-decomp-es.ts`,
     output: { file: `dist/poly-decomp-es.js`, format: 'esm' },
     plugins: [json(), resolve({ extensions }), babel(babelOptions), filesize()],
   },
   {
-    input: `./src/index.ts`,
+    input: `./src/poly-decomp-es.ts`,
     output: { file: `dist/poly-decomp-es.cjs.js`, format: 'cjs' },
     plugins: [
       json(),

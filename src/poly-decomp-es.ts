@@ -1,4 +1,5 @@
-import type { Point, Polygon } from 'types'
+export type Point = [number, number]
+export type Polygon = Point[]
 
 const tmpPoint1: Point = [0, 0]
 const tmpPoint2: Point = [0, 0]
