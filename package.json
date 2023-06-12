@@ -52,7 +52,7 @@
     "@changesets/cli": "^2.22.0",
     "@rollup/plugin-babel": "^6.0.3",
     "@rollup/plugin-json": "^6.0.0",
-    "@rollup/plugin-node-resolve": "^13.1.1",
+    "@rollup/plugin-node-resolve": "^15.1.0",
     "@rollup/plugin-replace": "^3.0.0",
     "@types/jest": "^27.0.3",
     "@types/node": "^20.3.0",
