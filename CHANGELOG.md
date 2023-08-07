@@ -1,5 +1,11 @@
 ### Changelog
 
+## 0.4.2
+
+### Patch Changes
+
+- c476da2: chore: bump various dev dependencies
+
 ##### 0.4.1
 
 - Fix typescript declaration output
