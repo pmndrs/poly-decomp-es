@@ -9,7 +9,7 @@
   },
   "devDependencies": {
     "dat.gui": "^0.7.9",
-    "vite": "^2.9.16",
+    "vite": "^2.9.18",
     "poly-decomp-es": "file:../"
   }
 }
